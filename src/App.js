@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Add from './components/Add';
 import Table from './components/Table';
-import Repo from './components/Repo';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class App extends Component {
   state = {
@@ -20,19 +19,29 @@ export default class App extends Component {
         language: 'JavaScript'
       }
     ]
-  };
+  }; 
+  //function for add repo
+  addRepo=(repo)=>{
+    let newRepo=this.state.repos
+    newRepo.push(repo)
+    this.setState({repos:newRepo})
+  }
+
+
+
   render() {
+
     
-    
+   
+
+    const {repos}=this.state;
+    const {addRepo}=this;
     return (
       <div style={{ border: 'black 1px solid' }}>
-        <h6>App</h6>
-      const{id,title,status,language}={this.state}   
-
-        <Add row={item.title}></Add>
-
-        <Table></Table>
-        <Repo></Repo>
+       <button onClick={addRepo.bind(this,{id:7,title:"function",status:"puplic",language:"html"})}>Add</button>
+       
+        <Add/>
+        <Table repos={repos}/>
         
         
       </div>
